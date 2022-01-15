@@ -1,9 +1,9 @@
 <?php
     define('USER', 'root');
-    define('PASSWORD', '');
+    define('PASSWORD', 'root');
     define('HOST', 'localhost');
-    define('DATABASE', 'test');
-    define('www','http://localhost/PhoneBook/');
+    define('DATABASE', 'pdo-test');
+    define('www','http://PhoneBook/');
     try {
         $connection = new PDO("mysql:host=".HOST.";dbname=".DATABASE, USER, PASSWORD);
     } catch (PDOException $e) {
