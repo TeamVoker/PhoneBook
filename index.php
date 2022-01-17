@@ -14,9 +14,9 @@ include('config.php');
 </head>
 
 <body>
-<form action="<?php echo www . "index.php" ?> " method="post">
+    <form action="<?php echo www . "index.php" ?> " method="post">
         <header>
-            <div class = "title">PhoneBook</div>
+            <div class="title">PhoneBook</div>
         </header>
         <div class="main">
             <h2>Вход</h2>
@@ -44,28 +44,37 @@ include('config.php');
             $username = $_POST['username'];
             $password = $_POST['password'];
 
+
+            
+
+
+
             // $query = $connection->prepare("SELECT * FROM authorization WHERE Login=:username;");
             // $query->bindParam('username', $username, PDO::PARAM_STR);
             // // $query->execute("username", $username, PDO::PARAM_STR);
-            
+
             // // $query->execute(['username' => $username]);
             // $result = $query->fetch();
 
-            $query = "SELECT * FROM authorization WHERE Login='". $username."';";
+            $query = "SELECT * FROM authorization WHERE Login='" . $username . "';";
             $result = $connection->query($query);
             $row = $result->fetch(PDO::FETCH_ASSOC);
 
             if (!$result) {
-                // if () {
+                //if () {
 
                 echo '<p class="error">Неверные пароль или имя пользователя!</p>';
             } else {
                 if ($password == $row['Password']) {
                     $_SESSION['user_id'] = $row['ID'];
                     echo '<p class="success">Поздравляем, вы прошли авторизацию!</p>';
-                } else {
+                    echo '<meta http-equiv="refresh" content="1;URL=' . www . 'index2.php">';
+                }
+                else {
                     echo '<p class="error"> Неверные пароль или имя пользователя!</p>';
                 }
+                
+                            //(empty($var))
             }
         }
         ?>
